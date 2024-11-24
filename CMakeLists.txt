@@ -2,6 +2,7 @@
 
 cmake_minimum_required(VERSION 3.23)
 
+project(gpuRIR LANGUAGES CXX CUDA)
 find_package(CUDAToolkit REQUIRED)
 
 # status messages for debugging
