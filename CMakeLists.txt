@@ -2,8 +2,7 @@
 
 cmake_minimum_required(VERSION 3.23)
 
-project(gpuRIR LANGUAGES CXX CUDA)
-find_package(CUDA)
+find_package(CUDAToolkit REQUIRED)
 
 # Select several CUDA architectures
 #include(FindCUDA)
