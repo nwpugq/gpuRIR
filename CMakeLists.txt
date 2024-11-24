@@ -4,6 +4,12 @@ cmake_minimum_required(VERSION 3.23)
 
 find_package(CUDAToolkit REQUIRED)
 
+# status messages for debugging
+message(STATUS "Found CUDA: ${CUDAToolkit_VERSION}")
+message(STATUS "CUDAToolkit_BIN_DIR: ${CUDAToolkit_BIN_DIR}")
+message(STATUS "CUDAToolkit_NVCC_EXECUTABLE: ${CUDAToolkit_NVCC_EXECUTABLE}")
+message(STATUS "CMAKE_CUDA_COMPILER: ${CMAKE_CUDA_COMPILER}")
+
 # Select several CUDA architectures
 #include(FindCUDA)
 #cuda_select_nvcc_arch_flags(CUDA_ARCH_FLAGS Common) # Change Common by Auto for autodetect
@@ -52,3 +58,6 @@ target_link_libraries(gpuRIR_bind PRIVATE ${CUDA_curand_LIBRARY})
 target_link_libraries(gpuRIR_bind PRIVATE ${CUDA_CUFFT_LIBRARIES})
 target_link_libraries(gpuRIR_bind PRIVATE gpuRIRcu)
 target_link_libraries(gpuRIR_bind PRIVATE pybind11::module)
+
+target_link_libraries(gpuRIR_bind PRIVATE CUDA::curand CUDA::cufft)
+target_link_libraries(gpuRIR_bind PRIVATE gpuRIRcu pybind11::module)
